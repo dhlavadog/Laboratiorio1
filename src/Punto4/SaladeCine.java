@@ -9,6 +9,7 @@ package Punto4;
  *
  * @author Diego Humberto Lavado Gonzalez
  */
+
 import java.util.Scanner;
 public class SaladeCine {
 
@@ -27,7 +28,7 @@ public class SaladeCine {
         int sillas= 0;
         int recarga = 50000;
         boolean menu = true;
-        int opcion[] = new int[4];
+        int opcion[] = new int[2];
         String reservadas= "";
         while(menu == true)
         
@@ -42,19 +43,20 @@ public class SaladeCine {
             System.out.println("1. Reserva");
             System.out.println("2. Pagar Reserva");
             System.out.println("3. Manejo de Tarjetas");
+            System.out.println("4. Comprar Boleta");
             System.out.print("Ingrese el numero correspondiente a una de las opciones: ");
             
             opcion[0] = leer.nextInt();
             switch(opcion[0])
             {
                 case 1 : System.out.println("RESERVA:");
-                         System.out.println("1. Eliminar");
+                         System.out.println("1. Eliminar Reserva");
                          System.out.println("2. Guardar Reserva");
-                         System.out.println("3. Cargar Reserva");
+                         System.out.print("Seleccione una opcion:");
                          opcion[1] = leer.nextInt();
                          switch(opcion[1])
                          {
-                             case 1 : System.out.println("ELIMINAR");
+                             case 1 : System.out.println("ELIMINAR RESERVA");
                                       System.out.println("Ingrese documento");
                                       identidad = leer.nextInt();
                                       reservadas = "";
@@ -68,21 +70,12 @@ public class SaladeCine {
                                       filas = leer.next();
                                       System.out.println("Ingrese Columna");
                                       columnas = leer.nextInt();
-                                      reservadas = reservadas +( filas+columnas)+" ";
+                                      reservadas = reservadas +(filas+columnas)+" ";
                                       sillas++;
                                       break;
-                             case 3 : System.out.println("");
-                                      System.out.println("CARGAR RESERVA");
-                                      System.out.println("");
-                                      System.out.println("Ingrese documento");
-                                      identidad = leer.nextInt();
-                                      System.out.println("Sillas Reservadas: "+reservadas);
-                                      System.out.println("Tarjeta TARCINE No."+identidad);
                                       
-                                      
-                                      
-                                      
-                                      
+                             default :System.out.println("Ingrese una opcion valida");
+                                      break;          
                          }
                          break;
                 
@@ -95,11 +88,14 @@ public class SaladeCine {
                              case 1 : if(filas.equals("I") || filas.equals("J") || filas.equals("K")) caja = sillas*11000;  
                                       else caja = sillas*8000;
                                       break;
+                                      
                              case 2 : if(filas.equals("I") || filas.equals("J") || filas.equals("K")) 
-                                      caja = sillas*11000 - ((sillas*11000)*0.1);  
-                                      else caja = sillas*8000 -((sillas*8000)*0.1) ;
+                                      caja = caja + sillas*11000 - ((sillas*11000)*0.1);  
+                                      else caja = caja + sillas*8000 -((sillas*8000)*0.1) ;
                                       break;
-                             
+                                      
+                             default :System.out.println("Ingrese una opcion valida");
+                                      break;
                                         
                          }
                          break;
@@ -116,14 +112,44 @@ public class SaladeCine {
                                       identidad = leer.nextInt();
                                       caja = caja + 70000;
                                       break;
+                                      
                              case 2 : System.out.println("");
                                       System.out.println("RECARGAR TARJETA");
                                       System.out.println("");
-                                      System.out.println("Ingrese el valor de la recarga");
+                                      System.out.println("Recarga de 50000 realizada");
                                       caja = caja + recarga;
+                                      break;
+                                      
+                             default :System.out.println("Ingrese una opcion valida");
                                       
                          }
                          break;
+                         
+                case 4 : System.out.println("COMPRAR BOLETA");
+                         System.out.println("¿Cuenta con Tarjeta TARCINE? Si/No");
+                         String tarcine= "";
+                         tarcine= leer.next();
+                         if(tarcine.equals("si"))
+                         {
+                             System.out.println("Seleccione Fila");
+                             filas = leer.next();
+                             System.out.println("Seleccione Columna");
+                             columnas = leer.nextInt();
+                             if(filas.equals("I") || filas.equals("J") || filas.equals("K")) caja = caja + 11000 - (11000*0.1);
+                             else caja = caja + sillas*8000 -((sillas*8000)*0.1) ;     
+                         }
+                         
+                         else
+                         {
+                            System.out.println("Seleccione Fila");
+                            filas = leer.next();
+                            System.out.println("Seleccione Columna");
+                            columnas = leer.nextInt();
+                            if(filas.equals("I") || filas.equals("J") || filas.equals("K")) caja = caja + 11000;
+                            else caja = caja + 8000 ; 
+                         }
+                         
+                         
                        
                 default :System.out.println("Ingrese una opcion valida");
                          break;
