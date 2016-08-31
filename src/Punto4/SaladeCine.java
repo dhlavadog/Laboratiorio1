@@ -59,6 +59,7 @@ public class SaladeCine {
                                       identidad = leer.nextInt();
                                       reservadas = "";
                                       System.out.println("");
+                                      
                                       break;
                              case 2 : System.out.println("GUARDAR RESERVA");
                                       System.out.println("Ingrese documento");
