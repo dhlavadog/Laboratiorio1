@@ -7,7 +7,7 @@ package Punto4;
 
 /**
  *
- * @author PC
+ * @author Diego Humberto Lavado Gonzalez
  */
 import java.util.Scanner;
 public class SaladeCine {
@@ -22,10 +22,10 @@ public class SaladeCine {
         String filas = "";
         int columnas= 0;
         
-        int caja = 0;
+        double caja = 0;
         int identidad;
         int sillas= 0;
-        int recarga;
+        int recarga = 50000;
         boolean menu = true;
         int opcion[] = new int[4];
         String reservadas= "";
@@ -76,6 +76,8 @@ public class SaladeCine {
                                       System.out.println("Ingrese documento");
                                       identidad = leer.nextInt();
                                       System.out.println("Sillas Reservadas: "+reservadas);
+                                      System.out.println("Tarjeta TARCINE No."+identidad);
+                                      
                                       
                                       
                                       
@@ -87,6 +89,18 @@ public class SaladeCine {
                          System.out.println("1. Pagar en Efectivo");
                          System.out.println("2. Pagar con Tarjeta");
                          opcion[1] = leer.nextInt();
+                         switch(opcion[1])
+                         {
+                             case 1 : if(filas.equals("I") || filas.equals("J") || filas.equals("K")) caja = sillas*11000;  
+                                      else caja = sillas*8000;
+                                      break;
+                             case 2 : if(filas.equals("I") || filas.equals("J") || filas.equals("K")) 
+                                      caja = sillas*11000 - ((sillas*11000)*0.1);  
+                                      else caja = sillas*8000 -((sillas*8000)*0.1) ;
+                                      break;
+                             
+                                        
+                         }
                          break;
                      
                 case 3 : System.out.println("MANEJO DE TARJETAS:");
@@ -105,7 +119,6 @@ public class SaladeCine {
                                       System.out.println("RECARGAR TARJETA");
                                       System.out.println("");
                                       System.out.println("Ingrese el valor de la recarga");
-                                      recarga = leer.nextInt();
                                       caja = caja + recarga;
                                       
                          }
