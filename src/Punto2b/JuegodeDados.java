@@ -44,7 +44,7 @@ public static void main(String[] args)
         while( totalJugador <101 || totalMaquina<101)
         {
             System.out.println("\nJUEGO DE DADOS\n");
-            System.out.println("Turno Jugador");
+            System.out.println("TURNO JUGADOR");
             System.out.println("................");
             System.out.println("Precione 1 para lanzar dados");
             lanzar= leer.nextInt();
@@ -54,10 +54,10 @@ public static void main(String[] args)
             System.out.println("Lanzamiento Dado 2:"+dado2Jugador);
             if(dado1Jugador != 1 && dado2Jugador != 1)
             {
-                turnoJugador= turnoJugador+dado1Jugador+dado2Jugador;
+                turnoJugador= dado1Jugador+dado2Jugador;
                 System.out.println("¿Desea tirar los dados otra vez? Si/No");
                 decision = leer.next();
-                if(decision.equals("no")) totalJugador= turnoJugador;
+                if(decision.equals("no")) totalJugador = totalJugador + turnoJugador;
                 else 
                 {
                    dado1Jugador = 0;
@@ -72,7 +72,7 @@ public static void main(String[] args)
             else if(dado1Jugador == 1 && dado2Jugador == 1) totalJugador =0;
              System.out.println("Puntaje Jugador = "+totalJugador);
              System.out.println("Puntaje Maquina = "+totalMaquina);
-             System.out.println("\nTurno de la Maquina");
+             System.out.println("\nTURNO DE LA MAQUINA");
              System.out.println("................");
              dado1Maquina = lanzamientoDados();
              dado2Maquina = lanzamientoDados();
@@ -80,17 +80,17 @@ public static void main(String[] args)
              System.out.println("Lanzamiento Dado 2:"+dado2Maquina);
              
              if(dado1Maquina != 1 && dado2Maquina != 1)
-               totalMaquina = dado1Maquina+dado2Maquina;
+               totalMaquina = totalMaquina + dado1Maquina+dado2Maquina;
             else if(dado1Maquina == 1 || dado2Maquina == 1) turnoMaquina =0;
             else if(dado1Maquina == 1 && dado2Maquina == 1) totalMaquina =0;
-             System.out.println("Final de la Ronda "+i+":");
+             System.out.println("\nFINAL DE LA RONDA "+i+":");
              System.out.println("Puntaje Jugador = "+totalJugador);
              System.out.println("Puntaje Maquina = "+totalMaquina);
              System.out.println("Presione 1 para iniciar siguiente ronda");
              lanzar = leer.nextInt();
              i++;
              
-             
+             System.out.println("RONDA: "+i);
          
             
         }
